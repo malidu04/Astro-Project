@@ -1,10 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
+
+const getUser = () => {
+	return Math.random() < 0.5 ? null : {
+		name: 'malidu',
+		email: 'malidupahasara04@gmail.com'
+	}
+}
+
+let user = getUser();
 ---
+
 
 <BaseLayout>
 	<div class="content">
-		<h2>Good to see you back</h2>
+		{user && (
+			<h2>Good to see you back, {user.name}</h2>
+		<p>Logged using {user.email}</p>
+		)}
 		<p>Avengers Assemble</p>
 		<a href="/books">Take a look at my reviews</a>
 	</div>
